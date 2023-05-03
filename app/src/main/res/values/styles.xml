@@ -4,6 +4,5 @@
     <style name="Edit_Text">
         <item name="android:background">@drawable/edit_text</item>
         <item name="android:padding">20dp</item>
-
     </style>
 </resources>
