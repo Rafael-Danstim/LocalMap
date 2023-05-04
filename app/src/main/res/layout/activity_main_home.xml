@@ -6,10 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainHome">
 
+    <!-- Barra de cima -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="110dp"
+        android:elevation="10dp"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,10 +21,12 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/barra_superior" />
 
+    <!-- Menu -->
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"
@@ -29,10 +35,12 @@
         app:layout_constraintVertical_bias="0.04000002"
         app:srcCompat="@drawable/menu_icon_branco" />
 
+    <!-- Titulo -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:fontFamily="@font/modern_antiqua"
         android:text="Local Map"
         android:textAlignment="center"
@@ -45,18 +53,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04000002" />
 
+    <!-- Menu inferior -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:adjustViewBounds="true"
+        android:elevation="10dp"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/vetor_barra_home" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- O padding coloca um espaço em baixo, devido ao tamanho da barra inferior -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="150dp"
+            android:paddingTop="100dp">
 
             <!-- Buscar estabelecimentos -->
             <EditText
@@ -64,6 +89,7 @@
                 android:layout_width="375dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_lupa"
                 android:drawablePadding="20dp"
                 android:fontFamily="@font/inter"
@@ -75,8 +101,8 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -93,7 +119,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c1"/>
+                            android:background="@drawable/c1" />
 
                         <TextView
                             android:id="@+id/textView1"
@@ -101,11 +127,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/modern_antiqua"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
                             android:text="TextView"
-                            android:textAlignment="center"
-                            android:fontFamily="@font/modern_antiqua"/>
+                            android:textAlignment="center" />
 
 
                     </LinearLayout>
@@ -120,19 +146,19 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c2"/>
+                            android:background="@drawable/c2" />
 
                         <TextView
                             android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:text="TextView"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/modern_antiqua"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
-                            android:autoSizeTextType="uniform"
-                            android:fontFamily="@font/modern_antiqua"/>
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
 
                     </LinearLayout>
@@ -147,19 +173,19 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c3"/>
+                            android:background="@drawable/c3" />
 
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:text="TextView"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/modern_antiqua"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
-                            android:autoSizeTextType="uniform"
-                            android:fontFamily="@font/modern_antiqua"/>
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
 
                     </LinearLayout>
@@ -174,19 +200,19 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c4"/>
+                            android:background="@drawable/c4" />
 
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:text="TextView"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/modern_antiqua"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
-                            android:autoSizeTextType="uniform"
-                            android:fontFamily="@font/modern_antiqua"/>
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
 
                     </LinearLayout>
@@ -201,19 +227,19 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c5"/>
+                            android:background="@drawable/c5" />
 
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:text="TextView"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/modern_antiqua"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
-                            android:autoSizeTextType="uniform"
-                            android:fontFamily="@font/modern_antiqua"/>
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
 
                     </LinearLayout>
@@ -225,17 +251,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vizualizados recentemente"
-                    android:fontFamily="@font/modern_antiqua"
-                    android:textSize="17dp"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:fontFamily="@font/modern_antiqua"
+                    android:text="Vizualizados recentemente"
+                    android:textSize="17dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -249,6 +275,7 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -263,10 +290,10 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="10dp">
 
@@ -280,210 +307,31 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i1"/>
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Cafeteria"
-                                android:textSize="17sp"
                                 android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/i2"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:fontFamily="@font/modern_antiqua"
-                                android:text="Museu"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/i3"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Alfaiataria"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/i4"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Floricultura"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/i5"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Padaria"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/i6"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Banco do Brasil"
-                                android:textSize="17sp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
                                 android:gravity="center_vertical"
-                                android:layout_marginTop="10dp"/>
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Cafeteria"
+                                android:textSize="17sp" />
 
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="10dp">
 
@@ -497,29 +345,221 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i7"/>
+                                android:src="@drawable/i2" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
                                 android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Museu"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/i3" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Alfaiataria"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/i4" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Floricultura"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/i5" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Padaria"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/i6" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="Banco do Brasil"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/i7" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
                                 android:text="Nova Vida"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
+                                android:textSize="17sp" />
 
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="10dp">
 
@@ -533,29 +573,31 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i8"/>
+                                android:src="@drawable/i8" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:autoSizeTextType="uniform"
                                 android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
                                 android:text="Orquestra"
-                                android:textSize="17sp"
-                                android:layout_marginTop="10dp"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
-                                android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
+                                android:textSize="17sp" />
 
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="10dp">
 
@@ -569,18 +611,19 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i9"/>
+                                android:src="@drawable/i9" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/modern_antiqua"
-                                android:text="Canteiro de Obras"
-                                android:textSize="17sp"
                                 android:layout_marginTop="10dp"
                                 android:autoSizeTextType="uniform"
-                                android:paddingRight="4dp"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="4dp"
-                                android:gravity="center_vertical"/>
+                                android:paddingRight="4dp"
+                                android:text="Canteiro de Obras"
+                                android:textSize="17sp" />
 
                         </LinearLayout>
 
@@ -594,12 +637,443 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ordenar por"
-                android:textSize="17dp"
-                android:fontFamily="@font/modern_antiqua"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
-                android:drawableRight="@drawable/baseline_arrow_drop_down_24"/>
+                android:layout_marginBottom="20dp"
+                android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+                android:fontFamily="@font/modern_antiqua"
+                android:text="Ordenar por"
+                android:textSize="17dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@color/purple_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- Nome_Estabelecimento -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/modern_antiqua"
+                            android:text="Supermercado Nova Vida"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <!-- Estrela -->
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/baseline_star_24" />
+
+                            <!-- Avaliação -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4,7"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                            <!-- Ponto -->
+                            <ImageView
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:srcCompat="@drawable/baseline_circle_24" />
+
+                            <!-- Categoria -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:text="Supermercado"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@color/purple_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- Nome_Estabelecimento -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/modern_antiqua"
+                            android:text="Supermercado Nova Vida"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <!-- Estrela -->
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/baseline_star_24" />
+
+                            <!-- Avaliação -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4,7"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                            <!-- Ponto -->
+                            <ImageView
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:srcCompat="@drawable/baseline_circle_24" />
+
+                            <!-- Categoria -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:text="Supermercado"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@color/purple_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- Nome_Estabelecimento -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/modern_antiqua"
+                            android:text="Supermercado Nova Vida"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <!-- Estrela -->
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/baseline_star_24" />
+
+                            <!-- Avaliação -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4,7"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                            <!-- Ponto -->
+                            <ImageView
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:srcCompat="@drawable/baseline_circle_24" />
+
+                            <!-- Categoria -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:text="Supermercado"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@color/purple_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- Nome_Estabelecimento -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/modern_antiqua"
+                            android:text="Supermercado Nova Vida"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <!-- Estrela -->
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/baseline_star_24" />
+
+                            <!-- Avaliação -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4,7"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                            <!-- Ponto -->
+                            <ImageView
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:srcCompat="@drawable/baseline_circle_24" />
+
+                            <!-- Categoria -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:text="Supermercado"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@color/purple_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- Nome_Estabelecimento -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/modern_antiqua"
+                            android:text="Supermercado Nova Vida"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <!-- Estrela -->
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/baseline_star_24" />
+
+                            <!-- Avaliação -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4,7"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                            <!-- Ponto -->
+                            <ImageView
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:srcCompat="@drawable/baseline_circle_24" />
+
+                            <!-- Categoria -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/modern_antiqua"
+                                android:text="Supermercado"
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
