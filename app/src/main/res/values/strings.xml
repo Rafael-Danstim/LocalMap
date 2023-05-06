@@ -11,4 +11,6 @@
     <string name="menu_home">Local Map</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_favoritos">Favoritos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
