@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         botaoLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainHome = new Intent(getApplicationContext(),MainHome.class);
-                startActivity(mainHome);
+                Intent mainInicio = new Intent(getApplicationContext(),MainInicio.class);
+                startActivity(mainInicio);
             }
         });
     }
