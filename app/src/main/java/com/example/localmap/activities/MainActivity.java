@@ -1,4 +1,4 @@
-package com.example.localmap;
+package com.example.localmap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.localmap.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         botaoLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainInicio = new Intent(getApplicationContext(),MainInicio.class);
+                Intent mainInicio = new Intent(getApplicationContext(), InicioActivity.class);
                 startActivity(mainInicio);
             }
         });

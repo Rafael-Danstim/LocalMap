@@ -1,4 +1,4 @@
-package com.example.localmap;
+package com.example.localmap.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.localmap.R;
 import com.example.localmap.databinding.ActivityMainInicioBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainInicio extends AppCompatActivity {
+public class InicioActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainInicioBinding binding;
@@ -66,7 +67,7 @@ public class MainInicio extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent configuracoes = new Intent(getApplicationContext(), MainConfiguracao.class);
+                Intent configuracoes = new Intent(getApplicationContext(), ConfiguracaoActivity.class);
                 startActivity(configuracoes);
                 break;
         }

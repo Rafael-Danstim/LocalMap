@@ -1,4 +1,4 @@
-package com.example.localmap;
+package com.example.localmap.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class MainConfiguracao extends AppCompatActivity {
+import com.example.localmap.R;
+
+public class ConfiguracaoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
