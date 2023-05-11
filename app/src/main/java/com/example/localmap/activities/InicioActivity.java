@@ -46,9 +46,10 @@ public class InicioActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        //Abaixo, menu inferior.
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
+        //Abaixo, ocultar o menu inferior quando perfil ou favoritos for selecionado.
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.nav_perfil || destination.getId() == R.id.nav_favoritos) {
                 bottomNavigationView.setVisibility(View.GONE);
