@@ -57,12 +57,6 @@ public class MainInicio extends AppCompatActivity {
         });
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_inicio, menu);
-        return true;
-    }*/
-
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_inicio, menu);
         return super.onCreateOptionsMenu(menu);
