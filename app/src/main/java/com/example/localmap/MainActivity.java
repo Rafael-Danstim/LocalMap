@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button botaoLogar;
+    private Button botaoLogar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
