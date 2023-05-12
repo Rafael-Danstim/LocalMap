@@ -133,7 +133,6 @@
                             android:text="TextView"
                             android:textAlignment="center" />
 
-
                     </LinearLayout>
 
                     <LinearLayout
