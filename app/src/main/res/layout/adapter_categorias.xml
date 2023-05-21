@@ -5,8 +5,12 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="135dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:autoSizeTextType="uniform"
+            android:textSize="15dp"
+            android:tag="android:autoSizeTextType='uniform'"
             android:fontFamily="@font/modern_antiqua"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"

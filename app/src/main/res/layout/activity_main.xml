@@ -32,6 +32,7 @@
         android:elevation="6dp"
         android:fontFamily="@font/inter_bold"
         android:text="Continuar com o Google"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"

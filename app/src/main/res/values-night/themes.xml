@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Cor do texto do menu de configuracoes -->
+        <item name="android:itemTextAppearance">@style/MenuItemStyle</item>
     </style>
 </resources>
