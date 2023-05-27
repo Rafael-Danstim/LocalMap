@@ -1,49 +1,55 @@
 package com.example.localmap.recycler_view_classes;
 
-import android.net.Uri;
-
-public class Estabelecimentos {
-    private String nomeDoEstabelecimento;
-    private Categorias nomeDaCategoria;
+public class Estabelecimento {
+    private String nome;
+    private Categoria categoria;
     private String endereco;
     private String rotaGoogleMaps;
-    private int imagemDoEstabelecimento;
+    private int imagem;
     private double avaliacao;
     private String telefoneContato;
     private boolean favoritado;
 
     //Construtor Geral da classe
-    public Estabelecimentos(String nomeDoEstabelecimento, Categorias nomeDaCategoria, String endereco, String rotaGoogleMaps, int imagemDoEstabelecimento, double avaliacao, String telefoneContato, boolean favoritado) {
-        this.nomeDoEstabelecimento = nomeDoEstabelecimento;
-        this.nomeDaCategoria = nomeDaCategoria;
+    public Estabelecimento(String nome, Categoria categoria, String endereco, String rotaGoogleMaps, int imagem, double avaliacao, String telefoneContato, boolean favoritado) {
+        this.nome = nome;
+        this.categoria = categoria;
         this.endereco = endereco;
         this.rotaGoogleMaps = rotaGoogleMaps;
-        this.imagemDoEstabelecimento = imagemDoEstabelecimento;
+        this.imagem = imagem;
         this.avaliacao = avaliacao;
         this.telefoneContato = telefoneContato;
         this.favoritado = favoritado;
     }
 
     //Construtor para a RecyclerView dos estabelecimentos recentemente visitados na tela de inicio.
-    public Estabelecimentos(int imagemDoEstabelecimento, String nomeDoEstabelecimento) {
-        this.imagemDoEstabelecimento = imagemDoEstabelecimento;
-        this.nomeDoEstabelecimento = nomeDoEstabelecimento;
+    public Estabelecimento(int imagem, String nome) {
+        this.imagem = imagem;
+        this.nome = nome;
     }
 
-    public String getNomeDoEstabelecimento() {
-        return nomeDoEstabelecimento;
+    //Construtor para a RecyclerView da lista de estabelecimentos na tela de inicio.
+    public Estabelecimento(int imagem, String nome, double avaliacao, Categoria categoria) {
+        this.imagem = imagem;
+        this.nome = nome;
+        this.avaliacao = avaliacao;
+        this.categoria = categoria;
     }
 
-    public void setNomeDoEstabelecimento(String nomeDoEstabelecimento) {
-        this.nomeDoEstabelecimento = nomeDoEstabelecimento;
+    public String getNome() {
+        return nome;
     }
 
-    public Categorias getNomeDaCategoria() {
-        return nomeDaCategoria;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setNomeDaCategoria(Categorias nomeDaCategoria) {
-        this.nomeDaCategoria = nomeDaCategoria;
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public String getEndereco() {
@@ -62,12 +68,12 @@ public class Estabelecimentos {
         this.rotaGoogleMaps = rotaGoogleMaps;
     }
 
-    public int getImagemDoEstabelecimento() {
-        return imagemDoEstabelecimento;
+    public int getImagem() {
+        return imagem;
     }
 
-    public void setImagemDoEstabelecimento(int imagemDoEstabelecimento) {
-        this.imagemDoEstabelecimento = imagemDoEstabelecimento;
+    public void setImagem(int imagem) {
+        this.imagem = imagem;
     }
 
     public double getAvaliacao() {

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
-import com.example.localmap.recycler_view_classes.Estabelecimentos;
+import com.example.localmap.recycler_view_classes.Estabelecimento;
 
 import java.util.List;
 
@@ -17,10 +17,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EstabelecimentosRecentesAdapter extends RecyclerView.Adapter<EstabelecimentosRecentesAdapter.MyViewHolder> {
 
-    private List<Estabelecimentos> listaEstabelecimentosRecentes;
+    private List<Estabelecimento> listaEstabelecimentoRecente;
 
-    public EstabelecimentosRecentesAdapter(List<Estabelecimentos> lista) {
-        this.listaEstabelecimentosRecentes = lista;
+    public EstabelecimentosRecentesAdapter(List<Estabelecimento> lista) {
+        this.listaEstabelecimentoRecente = lista;
     }
 
     @NonNull
@@ -34,15 +34,15 @@ public class EstabelecimentosRecentesAdapter extends RecyclerView.Adapter<Estabe
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Estabelecimentos estabelecimentosRecentes = listaEstabelecimentosRecentes.get(position);
+        Estabelecimento estabelecimentoRecente = listaEstabelecimentoRecente.get(position);
 
-        holder.imagemDoEstabelecimento.setImageResource(estabelecimentosRecentes.getImagemDoEstabelecimento());
-        holder.nomeDoEstabelecimento.setText(estabelecimentosRecentes.getNomeDoEstabelecimento());
+        holder.imagemDoEstabelecimento.setImageResource(estabelecimentoRecente.getImagem());
+        holder.nomeDoEstabelecimento.setText(estabelecimentoRecente.getNome());
     }
 
     @Override
     public int getItemCount() {
-        return listaEstabelecimentosRecentes.size();
+        return listaEstabelecimentoRecente.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

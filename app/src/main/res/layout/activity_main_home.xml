@@ -119,7 +119,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c1" />
+                            android:background="@drawable/i1" />
 
                         <TextView
                             android:id="@+id/textView1"
@@ -145,7 +145,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c2" />
+                            android:background="@drawable/i1" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -172,7 +172,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c3" />
+                            android:background="@drawable/i1" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -199,7 +199,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c4" />
+                            android:background="@drawable/i1" />
 
                         <TextView
                             android:id="@+id/textView4"
@@ -226,7 +226,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:layout_margin="10dp"
-                            android:background="@drawable/c5" />
+                            android:background="@drawable/i1" />
 
                         <TextView
                             android:id="@+id/textView5"
@@ -458,7 +458,7 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i5" />
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -496,7 +496,7 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i6" />
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -534,7 +534,7 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i7" />
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -572,7 +572,7 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i8" />
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -610,7 +610,7 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/i9" />
+                                android:src="@drawable/i1" />
 
                             <TextView
                                 android:layout_width="wrap_content"

@@ -11,6 +11,11 @@
     <string name="menu_home">Local Map</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_favoritos">Favoritos</string>
+    <!-- "Ordenar por" de inicio -->
+    <string-array name="ordenar">
+        <item>Distância</item>
+        <item>Melhor Avaliado</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

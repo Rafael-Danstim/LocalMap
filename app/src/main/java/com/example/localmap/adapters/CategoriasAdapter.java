@@ -10,15 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
-import com.example.localmap.recycler_view_classes.Categorias;
+import com.example.localmap.recycler_view_classes.Categoria;
 
 import java.util.List;
 
 public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.MyViewHolder> {
 
-    private List<Categorias> listaCategorias;
+    private List<Categoria> listaCategorias;
 
-    public CategoriasAdapter(List<Categorias> lista) {
+    public CategoriasAdapter(List<Categoria> lista) {
         this.listaCategorias = lista;
     }
 
@@ -33,10 +33,10 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Categorias categorias = listaCategorias.get(position);
+        Categoria categoria = listaCategorias.get(position);
 
-        holder.imagemDaCategoria.setBackgroundResource(categorias.getImagemDaCategoria());
-        holder.nomeDaCategoria.setText(categorias.getNomeDaCategoria());
+        holder.imagemDaCategoria.setBackgroundResource(categoria.getImagem());
+        holder.nomeDaCategoria.setText(categoria.getNome());
     }
 
     @Override
