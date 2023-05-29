@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.localmap.R;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -18,9 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EstabelecimentosInicioAdapter extends RecyclerView.Adapter<EstabelecimentosInicioAdapter.MyViewHolder> {
 
     private List<Estabelecimento> listaEstabelecimentoInicio;
+    private List<Estabelecimento> listaEstabelecimentoFiltrada;
 
     public EstabelecimentosInicioAdapter(List<Estabelecimento> lista) {
         this.listaEstabelecimentoInicio = lista;
+        this.listaEstabelecimentoFiltrada = new ArrayList<>(lista);
     }
 
     @NonNull
@@ -42,7 +45,16 @@ public class EstabelecimentosInicioAdapter extends RecyclerView.Adapter<Estabele
 
     @Override
     public int getItemCount() {
-        return listaEstabelecimentoInicio.size();
+        return listaEstabelecimentoFiltrada.size();
+    }
+
+    public void setListaEstabelecimentos(List<Estabelecimento> listaEstabelecimentos) {
+        listaEstabelecimentoFiltrada = new ArrayList<>(listaEstabelecimentos);
+        notifyDataSetChanged();
+    }
+
+    public void setListaEstabelecimentosInicio(List<Estabelecimento> listaEstabelecimentos) {
+        listaEstabelecimentoInicio = new ArrayList<>(listaEstabelecimentos);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

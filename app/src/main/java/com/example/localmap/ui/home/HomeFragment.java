@@ -1,10 +1,10 @@
 package com.example.localmap.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
+import com.example.localmap.activities.InicioActivity;
+import com.example.localmap.activities.PesquisaActivity;
 import com.example.localmap.adapters.CategoriasAdapter;
 import com.example.localmap.adapters.EstabelecimentosInicioAdapter;
 import com.example.localmap.adapters.EstabelecimentosRecentesAdapter;
@@ -26,6 +28,7 @@ import com.example.localmap.itens_listas.ItemEstabelecimentoRecente;
 import com.example.localmap.recycler_view_classes.Categoria;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +43,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     private RecyclerView estabelecimentosRecentesRecyclerView;
     private List<Estabelecimento> listaEstabelecimentoRecente = new ArrayList<>();
     //Abaixo, RecyclerView da lista de estabelecimentos no inicio.
-    private RecyclerView estabelecimentosInicioRecyclerView;
-    private List<Estabelecimento> listaEstabelecimentoInicio = new ArrayList<>();
+    private RecyclerView estabelecimentosRecyclerView;
+    private List<Estabelecimento> listaEstabelecimento = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,8 +53,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         View root = binding.getRoot();
 
         TextView nomeOrdenarPor = root.findViewById(R.id.nomeOrdenarPor);
+        TextView abrirPesquisa = root.findViewById(R.id.abrirPesquisa);
 
-        // Abaixo, criando um spinner para "Ordenar por".
+        //--> Abaixo, criando um spinner para "Ordenar por".
         Spinner spinnerOrdenarPor = root.findViewById(R.id.ordenarPorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(), R.array.ordenar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -62,6 +66,15 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onClick(View v) {
                 spinnerOrdenarPor.performClick();
+            }
+        });
+
+        //--> Abaixo, abrir perquisa.
+        abrirPesquisa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent abrirPesquisa = new Intent(getContext(), PesquisaActivity.class);
+                startActivity(abrirPesquisa);
             }
         });
 
@@ -90,14 +103,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         estabelecimentosRecentesRecyclerView.setAdapter(estabelecimentosRecentesAdapter);
 
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
-        estabelecimentosInicioRecyclerView = root.findViewById(R.id.estabelecimentosInicioRecyclerView);
+        estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
         //Abaixo, listando uma quantidade de estabelecimentos.
-        listaEstabelecimentoInicio = ItemEstabelecimentoInicio.criarEstabelecimentos(50);
-        EstabelecimentosInicioAdapter estabelecimentosInicioAdapter = new EstabelecimentosInicioAdapter(listaEstabelecimentoInicio);
+        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos(50);
+        EstabelecimentosInicioAdapter estabelecimentosInicioAdapter = new EstabelecimentosInicioAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        estabelecimentosInicioRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
-        estabelecimentosInicioRecyclerView.setHasFixedSize(true);
-        estabelecimentosInicioRecyclerView.setAdapter(estabelecimentosInicioAdapter);
+        estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
+        estabelecimentosRecyclerView.setHasFixedSize(true);
+        estabelecimentosRecyclerView.setAdapter(estabelecimentosInicioAdapter);
 
         return root;
     }

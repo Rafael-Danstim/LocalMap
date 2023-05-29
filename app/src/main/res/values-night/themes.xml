@@ -14,4 +14,9 @@
         <!-- Cor do texto do menu de configuracoes -->
         <item name="android:itemTextAppearance">@style/MenuItemStyle</item>
     </style>
+
+    <style name="PESQUISA">
+        <!-- Cor de fundo da barra de pesquisa -->
+        <item name="android:backgroundTint">@color/cinzaEscuro</item>
+    </style>
 </resources>

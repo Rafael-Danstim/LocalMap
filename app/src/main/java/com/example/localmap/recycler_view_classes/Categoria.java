@@ -1,6 +1,8 @@
 package com.example.localmap.recycler_view_classes;
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
 
     private int imagem;
     private String nome;

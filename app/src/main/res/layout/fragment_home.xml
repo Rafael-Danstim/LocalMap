@@ -14,7 +14,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="50dp">
+            android:paddingBottom="50dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                style="@style/PESQUISA"
+                android:background="@drawable/edit_text"
+                android:gravity="center_vertical"
+                android:id="@+id/abrirPesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:paddingStart="20dp"
+                android:drawableLeft="@drawable/ic_lupa"
+                android:drawablePadding="20dp"
+                android:fontFamily="@font/inter"
+                android:textSize="15dp"
+                android:text="Buscar estabelecimentos"
+                android:clickable="true"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoriasRecyclerView"
@@ -85,7 +102,7 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/estabelecimentosInicioRecyclerView"
+                android:id="@+id/estabelecimentosRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />

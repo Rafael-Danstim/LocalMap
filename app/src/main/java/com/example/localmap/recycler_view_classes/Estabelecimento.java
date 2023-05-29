@@ -1,6 +1,8 @@
 package com.example.localmap.recycler_view_classes;
 
-public class Estabelecimento {
+import java.io.Serializable;
+
+public class Estabelecimento implements Serializable {
     private String nome;
     private Categoria categoria;
     private String endereco;

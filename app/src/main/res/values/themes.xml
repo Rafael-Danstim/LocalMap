@@ -22,4 +22,9 @@
     <style name="Theme.LocalMap.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.LocalMap.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="PESQUISA">
+        <!-- Cor de fundo da barra de pesquisa -->
+        <item name="android:backgroundTint">@color/cinza</item>
+    </style>
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Edit_Text">
+    <style name="Edit_Text" parent="Widget.AppCompat.SearchView">
         <item name="android:background">@drawable/edit_text</item>
         <item name="android:padding">20dp</item>
     </style>
