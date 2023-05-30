@@ -25,10 +25,6 @@
             android:theme="@style/Theme.LocalMap.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.HomeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".activities.MainActivity"
             android:exported="true" >
             <intent-filter>
