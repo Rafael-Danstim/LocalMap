@@ -43,7 +43,7 @@ public class PesquisaActivity extends AppCompatActivity {
 
         // RecyclerView com a lista de estabelecimentos.
         estabelecimentosRecyclerView = findViewById(R.id.estabelecimentosRecyclerView);
-        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos(50);
+        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos();
         EstabelecimentosInicioAdapter adapter = new EstabelecimentosInicioAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);

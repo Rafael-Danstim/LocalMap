@@ -9,11 +9,12 @@ import java.util.List;
 
 public class ItemEstabelecimentoInicio {
 
-    public static List<Estabelecimento> criarEstabelecimentos(int quantidade) {
+    public static List<Estabelecimento> criarEstabelecimentos() {
         List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
+        int quantidade = 50;
         for (int i = 1; i <= quantidade; i++) {
             Categoria categoria = new Categoria("PetShop" + i);
-            Estabelecimento estabelecimento = new Estabelecimento(R.drawable.i2, "Padaria" + i, 1.9 + (i*3), categoria);
+            Estabelecimento estabelecimento = new Estabelecimento(R.drawable.i2, "Padaria" + i, 1.9 + (i/2), categoria);
             listaEstabelecimentos.add(estabelecimento);
         }
         return listaEstabelecimentos;

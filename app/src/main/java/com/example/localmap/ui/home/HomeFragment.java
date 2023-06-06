@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
         estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
         //Abaixo, listando uma quantidade de estabelecimentos.
-        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos(50);
+        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos();
         EstabelecimentosInicioAdapter estabelecimentosInicioAdapter = new EstabelecimentosInicioAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
