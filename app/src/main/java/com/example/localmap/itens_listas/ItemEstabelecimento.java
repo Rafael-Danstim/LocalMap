@@ -7,7 +7,7 @@ import com.example.localmap.recycler_view_classes.Estabelecimento;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemEstabelecimentoInicio {
+public class ItemEstabelecimento {
 
     public static List<Estabelecimento> criarEstabelecimentos() {
         List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();

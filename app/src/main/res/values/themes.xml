@@ -27,4 +27,7 @@
         <!-- Cor de fundo da barra de pesquisa -->
         <item name="android:backgroundTint">@color/cinza</item>
     </style>
+    <style name="ICONES">
+        <item name="android:tint">@color/black</item>
+    </style>
 </resources>

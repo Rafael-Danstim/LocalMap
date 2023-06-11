@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.widget.SearchView;
 
 import com.example.localmap.R;
-import com.example.localmap.adapters.EstabelecimentosInicioAdapter;
-import com.example.localmap.itens_listas.ItemEstabelecimentoInicio;
+import com.example.localmap.adapters.EstabelecimentoAdapter;
+import com.example.localmap.itens_listas.ItemEstabelecimento;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 
 import java.util.ArrayList;
@@ -43,8 +43,8 @@ public class PesquisaActivity extends AppCompatActivity {
 
         // RecyclerView com a lista de estabelecimentos.
         estabelecimentosRecyclerView = findViewById(R.id.estabelecimentosRecyclerView);
-        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos();
-        EstabelecimentosInicioAdapter adapter = new EstabelecimentosInicioAdapter(listaEstabelecimento);
+        listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
+        EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
         estabelecimentosRecyclerView.setHasFixedSize(true);
@@ -61,7 +61,7 @@ public class PesquisaActivity extends AppCompatActivity {
             }
         }
 
-        EstabelecimentosInicioAdapter adapter = (EstabelecimentosInicioAdapter) estabelecimentosRecyclerView.getAdapter();
+        EstabelecimentoAdapter adapter = (EstabelecimentoAdapter) estabelecimentosRecyclerView.getAdapter();
         adapter.setListaEstabelecimentos(resultadosPesquisa);
         adapter.setListaEstabelecimentosInicio(resultadosPesquisa);
         adapter.notifyDataSetChanged();

@@ -7,4 +7,8 @@
     <style name="MenuItemStyle" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
         <item name="android:textColor">@android:color/white</item>
     </style>
+    <style name="semi_circle_image_view">
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+    </style>
 </resources>

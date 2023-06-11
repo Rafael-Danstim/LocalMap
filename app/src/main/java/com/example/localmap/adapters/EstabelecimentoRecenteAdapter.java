@@ -15,11 +15,11 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EstabelecimentosRecentesAdapter extends RecyclerView.Adapter<EstabelecimentosRecentesAdapter.MyViewHolder> {
+public class EstabelecimentoRecenteAdapter extends RecyclerView.Adapter<EstabelecimentoRecenteAdapter.MyViewHolder> {
 
     private List<Estabelecimento> listaEstabelecimentoRecente;
 
-    public EstabelecimentosRecentesAdapter(List<Estabelecimento> lista) {
+    public EstabelecimentoRecenteAdapter(List<Estabelecimento> lista) {
         this.listaEstabelecimentoRecente = lista;
     }
 
@@ -29,7 +29,7 @@ public class EstabelecimentosRecentesAdapter extends RecyclerView.Adapter<Estabe
 
         View itemEstabelecimento = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_estabelecimentos_recentes, parent, false);
 
-        return new EstabelecimentosRecentesAdapter.MyViewHolder(itemEstabelecimento);
+        return new EstabelecimentoRecenteAdapter.MyViewHolder(itemEstabelecimento);
     }
 
     @Override

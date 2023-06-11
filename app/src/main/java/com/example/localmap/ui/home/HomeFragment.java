@@ -16,19 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
-import com.example.localmap.activities.InicioActivity;
 import com.example.localmap.activities.PesquisaActivity;
 import com.example.localmap.adapters.CategoriasAdapter;
-import com.example.localmap.adapters.EstabelecimentosInicioAdapter;
-import com.example.localmap.adapters.EstabelecimentosRecentesAdapter;
+import com.example.localmap.adapters.EstabelecimentoAdapter;
+import com.example.localmap.adapters.EstabelecimentoRecenteAdapter;
 import com.example.localmap.databinding.FragmentHomeBinding;
 import com.example.localmap.itens_listas.ItemCategoria;
-import com.example.localmap.itens_listas.ItemEstabelecimentoInicio;
+import com.example.localmap.itens_listas.ItemEstabelecimento;
 import com.example.localmap.itens_listas.ItemEstabelecimentoRecente;
 import com.example.localmap.recycler_view_classes.Categoria;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,21 +94,21 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         estabelecimentosRecentesRecyclerView = root.findViewById(R.id.estabelecimentosRecentesRecyclerView);
         //Abaixo, listando uma quantidade de estabelecimentos visualizados recentemente.
         listaEstabelecimentoRecente = ItemEstabelecimentoRecente.criarEstabelecimentosRecentes(50);
-        EstabelecimentosRecentesAdapter estabelecimentosRecentesAdapter = new EstabelecimentosRecentesAdapter(listaEstabelecimentoRecente);
+        EstabelecimentoRecenteAdapter estabelecimentoRecenteAdapter = new EstabelecimentoRecenteAdapter(listaEstabelecimentoRecente);
         LinearLayoutManager layoutManagerEstabelecimentosRecentes = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         estabelecimentosRecentesRecyclerView.setLayoutManager(layoutManagerEstabelecimentosRecentes);
         estabelecimentosRecentesRecyclerView.setHasFixedSize(true);
-        estabelecimentosRecentesRecyclerView.setAdapter(estabelecimentosRecentesAdapter);
+        estabelecimentosRecentesRecyclerView.setAdapter(estabelecimentoRecenteAdapter);
 
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
         estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
         //Abaixo, listando uma quantidade de estabelecimentos.
-        listaEstabelecimento = ItemEstabelecimentoInicio.criarEstabelecimentos();
-        EstabelecimentosInicioAdapter estabelecimentosInicioAdapter = new EstabelecimentosInicioAdapter(listaEstabelecimento);
+        listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
+        EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
         estabelecimentosRecyclerView.setHasFixedSize(true);
-        estabelecimentosRecyclerView.setAdapter(estabelecimentosInicioAdapter);
+        estabelecimentosRecyclerView.setAdapter(estabelecimentoAdapter);
 
         return root;
     }

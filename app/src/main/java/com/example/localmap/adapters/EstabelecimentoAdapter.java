@@ -1,5 +1,6 @@
 package com.example.localmap.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
+import com.example.localmap.activities.EstabelecimentoActivity;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 
 import java.util.ArrayList;
@@ -16,12 +18,12 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EstabelecimentosInicioAdapter extends RecyclerView.Adapter<EstabelecimentosInicioAdapter.MyViewHolder> {
+public class EstabelecimentoAdapter extends RecyclerView.Adapter<EstabelecimentoAdapter.MyViewHolder> {
 
     private List<Estabelecimento> listaEstabelecimentoInicio;
     private List<Estabelecimento> listaEstabelecimentoFiltrada;
 
-    public EstabelecimentosInicioAdapter(List<Estabelecimento> lista) {
+    public EstabelecimentoAdapter(List<Estabelecimento> lista) {
         this.listaEstabelecimentoInicio = lista;
         this.listaEstabelecimentoFiltrada = new ArrayList<>(lista);
     }
@@ -30,12 +32,26 @@ public class EstabelecimentosInicioAdapter extends RecyclerView.Adapter<Estabele
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemEstabelecimento = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_estabelecimentos_inicio, parent, false);
-        return new EstabelecimentosInicioAdapter.MyViewHolder(itemEstabelecimento);
+        return new EstabelecimentoAdapter.MyViewHolder(itemEstabelecimento);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Estabelecimento estabelecimentoInicio = listaEstabelecimentoInicio.get(position);
+
+        // Abaixo, torna cada item da lista clicável.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtem o estabelecimento correspondente ao item clicado
+                Estabelecimento estabelecimento = listaEstabelecimentoInicio.get(position);
+
+                // Abre a tela de estabelecimento com os dados do estabelecimento clicado
+                Intent intent = new Intent(view.getContext(), EstabelecimentoActivity.class);
+                intent.putExtra("estabelecimento", estabelecimento);
+                view.getContext().startActivity(intent);
+            }
+        });
 
         holder.imagemEstabelecimentoInicio.setImageResource(estabelecimentoInicio.getImagem());
         holder.nomeEstabelecimentoInicio.setText(estabelecimentoInicio.getNome());
