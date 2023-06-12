@@ -25,14 +25,18 @@ public class EstabelecimentoActivity extends AppCompatActivity {
         Estabelecimento estabelecimento = (Estabelecimento) getIntent().getSerializableExtra("estabelecimento");
         // Exibe os dados do estabelecimento nos campos correspondentes
         ShapeableImageView fotoEstabelecimentoShapeableImageView = findViewById(R.id.fotoEstabelecimentoShapeableImageView);
-        fotoEstabelecimentoShapeableImageView.setBackgroundResource(estabelecimento.getImagem());
+        fotoEstabelecimentoShapeableImageView.setImageResource(estabelecimento.getImagem());
         TextView nomeTextView = findViewById(R.id.nomeTextView);
         nomeTextView.setText(estabelecimento.getNome());
         TextView avaliacaoTextView = findViewById(R.id.avaliacaoTextView);
-        avaliacaoTextView.setText(String.valueOf(estabelecimento.getAvaliacao()));
+        avaliacaoTextView.setText(String.format("%.1f", estabelecimento.getAvaliacao()));
         TextView categoriaTextView = findViewById(R.id.categoriaTextView);
         categoriaTextView.setText(estabelecimento.getCategoria().getNome());
-        //Falta definir Contato, Endereço, Favorito e Rota
+        TextView contatoTextView = findViewById(R.id.contatoTextView);
+        contatoTextView.setText(estabelecimento.getTelefoneContato());
+        TextView enderecoTextView = findViewById(R.id.enderecoTextView);
+        enderecoTextView.setText(estabelecimento.getEndereco());
+        // Acima, falta definir Favorito e Rota
 
         // Muda o estado do botão favoritar
         btnFavoritar = findViewById(R.id.favButtonImageView);

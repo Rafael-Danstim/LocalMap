@@ -55,7 +55,7 @@ public class EstabelecimentoAdapter extends RecyclerView.Adapter<Estabelecimento
 
         holder.imagemEstabelecimentoInicio.setImageResource(estabelecimentoInicio.getImagem());
         holder.nomeEstabelecimentoInicio.setText(estabelecimentoInicio.getNome());
-        holder.avaliacaoEstabelecimentoInicio.setText(String.valueOf(estabelecimentoInicio.getAvaliacao()));
+        holder.avaliacaoEstabelecimentoInicio.setText(String.format("%.1f", estabelecimentoInicio.getAvaliacao()));
         holder.categoriaEstabelecimentoInicio.setText(estabelecimentoInicio.getCategoria().getNome());
     }
 
