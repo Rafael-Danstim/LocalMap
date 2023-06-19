@@ -13,9 +13,6 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 public class EstabelecimentoActivity extends AppCompatActivity {
 
-    private ImageView btnFavoritar;
-    private boolean favorito;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +20,7 @@ public class EstabelecimentoActivity extends AppCompatActivity {
 
         // Obtem o objeto estabelecimento da intent
         Estabelecimento estabelecimento = (Estabelecimento) getIntent().getSerializableExtra("estabelecimento");
+
         // Exibe os dados do estabelecimento nos campos correspondentes
         ShapeableImageView fotoEstabelecimentoShapeableImageView = findViewById(R.id.fotoEstabelecimentoShapeableImageView);
         fotoEstabelecimentoShapeableImageView.setImageResource(estabelecimento.getImagem());
@@ -36,20 +34,28 @@ public class EstabelecimentoActivity extends AppCompatActivity {
         contatoTextView.setText(estabelecimento.getTelefoneContato());
         TextView enderecoTextView = findViewById(R.id.enderecoTextView);
         enderecoTextView.setText(estabelecimento.getEndereco());
-        // Acima, falta definir Favorito e Rota
+        ImageView btnFavoritar = findViewById(R.id.favButtonImageView);
+        // Acima, falta definir Rota
 
-        // Muda o estado do botão favoritar
-        btnFavoritar = findViewById(R.id.favButtonImageView);
+        // Abaixo, verifica se o estabelecimento está favoritado
+        if (estabelecimento.isFavoritado() == false){
+            btnFavoritar.setImageDrawable(getDrawable(R.drawable.favorito_vazio));
+        }
+        else{
+            btnFavoritar.setImageDrawable(getDrawable(R.drawable.favorito_cheio));
+        }
+
+        // Abaixo, muda o status do botão de favoritar ao ser clicado.
         btnFavoritar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!favorito){
-                    favorito = true;
+                if (estabelecimento.isFavoritado() == false){
+                    estabelecimento.setFavoritado(true);
                     btnFavoritar.setImageDrawable(getDrawable(R.drawable.favorito_cheio));
                 }
                 else{
+                    estabelecimento.setFavoritado(false);
                     btnFavoritar.setImageDrawable(getDrawable(R.drawable.favorito_vazio));
-                    favorito = false;
                 }
             }
         });
