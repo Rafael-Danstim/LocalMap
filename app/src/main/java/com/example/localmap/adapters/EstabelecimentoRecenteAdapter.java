@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,7 +37,8 @@ public class EstabelecimentoRecenteAdapter extends RecyclerView.Adapter<Estabele
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Estabelecimento estabelecimentoRecente = listaEstabelecimentoRecente.get(position);
 
-        holder.imagemDoEstabelecimento.setImageResource(estabelecimentoRecente.getImagem());
+        //holder.imagemDoEstabelecimento.setImageResource(estabelecimentoRecente.getImagem());
+        Picasso.get().load(estabelecimentoRecente.getImagem()).into(holder.imagemDoEstabelecimento);
         holder.nomeDoEstabelecimento.setText(estabelecimentoRecente.getNome());
     }
 

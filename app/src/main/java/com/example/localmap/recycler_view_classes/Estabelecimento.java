@@ -3,17 +3,18 @@ package com.example.localmap.recycler_view_classes;
 import java.io.Serializable;
 
 public class Estabelecimento implements Serializable {
+    private int id;
     private String nome;
     private Categoria categoria;
     private String endereco;
     private String rotaGoogleMaps;
-    private int imagem;
+    private String imagem;
     private double avaliacao;
     private String telefoneContato;
     private boolean favoritado;
 
     //Construtor Geral da classe
-    public Estabelecimento(String nome, Categoria categoria, String endereco, String rotaGoogleMaps, int imagem, double avaliacao, String telefoneContato, boolean favoritado) {
+    public Estabelecimento(String nome, Categoria categoria, String endereco, String rotaGoogleMaps, String imagem, double avaliacao, String telefoneContato, boolean favoritado) {
         this.nome = nome;
         this.categoria = categoria;
         this.endereco = endereco;
@@ -25,17 +26,25 @@ public class Estabelecimento implements Serializable {
     }
 
     //Construtor para a RecyclerView dos estabelecimentos recentemente visitados na tela de inicio.
-    public Estabelecimento(int imagem, String nome) {
+    public Estabelecimento(String imagem, String nome) {
         this.imagem = imagem;
         this.nome = nome;
     }
 
     //Construtor para a RecyclerView da lista de estabelecimentos na tela de inicio.
-    public Estabelecimento(int imagem, String nome, double avaliacao, Categoria categoria) {
+    public Estabelecimento(String imagem, String nome, double avaliacao, Categoria categoria) {
         this.imagem = imagem;
         this.nome = nome;
         this.avaliacao = avaliacao;
         this.categoria = categoria;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -70,11 +79,11 @@ public class Estabelecimento implements Serializable {
         this.rotaGoogleMaps = rotaGoogleMaps;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
@@ -100,5 +109,20 @@ public class Estabelecimento implements Serializable {
 
     public void setFavoritado(boolean favoritado) {
         this.favoritado = favoritado;
+    }
+
+    @Override
+    public String toString() {
+        return "Estabelecimento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", rotaGoogleMaps='" + rotaGoogleMaps + '\'' +
+                ", imagem=" + imagem +
+                ", avaliacao=" + avaliacao +
+                ", telefoneContato='" + telefoneContato + '\'' +
+                ", favoritado=" + favoritado +
+                '}';
     }
 }

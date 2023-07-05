@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.localmap.R;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -23,7 +24,12 @@ public class EstabelecimentoActivity extends AppCompatActivity {
 
         // Exibe os dados do estabelecimento nos campos correspondentes
         ShapeableImageView fotoEstabelecimentoShapeableImageView = findViewById(R.id.fotoEstabelecimentoShapeableImageView);
-        fotoEstabelecimentoShapeableImageView.setImageResource(estabelecimento.getImagem());
+        //fotoEstabelecimentoShapeableImageView.setImageResource(estabelecimento.getImagem());
+
+        Glide.with(this)
+                .load(estabelecimento.getImagem())
+                .into(fotoEstabelecimentoShapeableImageView);
+
         TextView nomeTextView = findViewById(R.id.nomeTextView);
         nomeTextView.setText(estabelecimento.getNome());
         TextView avaliacaoTextView = findViewById(R.id.avaliacaoTextView);

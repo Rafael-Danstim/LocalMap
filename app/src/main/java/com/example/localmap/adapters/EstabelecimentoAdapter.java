@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.localmap.R;
 import com.example.localmap.activities.EstabelecimentoActivity;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,8 @@ public class EstabelecimentoAdapter extends RecyclerView.Adapter<Estabelecimento
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Estabelecimento estabelecimentoInicio = listaEstabelecimentoInicio.get(position);
+        //Estabelecimento estabelecimentoInicio = listaEstabelecimentoInicio.get(position);
+        Estabelecimento estabelecimento = listaEstabelecimentoFiltrada.get(position);
 
         // Abaixo, torna cada item da lista clicável.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +55,11 @@ public class EstabelecimentoAdapter extends RecyclerView.Adapter<Estabelecimento
             }
         });
 
-        holder.imagemEstabelecimentoInicio.setImageResource(estabelecimentoInicio.getImagem());
-        holder.nomeEstabelecimentoInicio.setText(estabelecimentoInicio.getNome());
-        holder.avaliacaoEstabelecimentoInicio.setText(String.format("%.1f", estabelecimentoInicio.getAvaliacao()));
-        holder.categoriaEstabelecimentoInicio.setText(estabelecimentoInicio.getCategoria().getNome());
+        //holder.imagemEstabelecimentoInicio.setImageResource(estabelecimento.getImagem());
+        Picasso.get().load(estabelecimento.getImagem()).into(holder.imagemEstabelecimentoInicio);
+        holder.nomeEstabelecimentoInicio.setText(estabelecimento.getNome());
+        holder.avaliacaoEstabelecimentoInicio.setText(String.format("%.1f", estabelecimento.getAvaliacao()));
+        holder.categoriaEstabelecimentoInicio.setText(estabelecimento.getCategoria().getNome());
     }
 
     @Override

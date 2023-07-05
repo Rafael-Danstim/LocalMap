@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,9 +27,16 @@ import com.example.localmap.itens_listas.ItemEstabelecimento;
 import com.example.localmap.itens_listas.ItemEstabelecimentoRecente;
 import com.example.localmap.recycler_view_classes.Categoria;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
+import com.example.localmap.retrofit.EstabelecimentoApi;
+import com.example.localmap.retrofit.RetrofitService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -43,6 +51,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     //Abaixo, RecyclerView da lista de estabelecimentos no inicio.
     private RecyclerView estabelecimentosRecyclerView;
     private List<Estabelecimento> listaEstabelecimento = new ArrayList<>();
+
+    private EstabelecimentoApi estabelecimentoApi;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -103,14 +113,53 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
         estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
         //Abaixo, listando uma quantidade de estabelecimentos.
-        listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
+        //listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
         EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
         estabelecimentosRecyclerView.setHasFixedSize(true);
         estabelecimentosRecyclerView.setAdapter(estabelecimentoAdapter);
 
+        // Crie a instância do RetrofitService
+        RetrofitService retrofitService = new RetrofitService();
+        // Obtenha o objeto Retrofit
+        Retrofit retrofit = retrofitService.getRetrofit();
+        // Crie uma instância da interface da API do Retrofit
+        estabelecimentoApi = retrofit.create(EstabelecimentoApi.class);
+
+        // Chame o método para obter a lista de estabelecimentos do servidor
+        getAllEstabelecimentos();
+
         return root;
+    }
+
+    // Método para obter a lista de estabelecimentos do servidor usando o Retrofit
+    private void getAllEstabelecimentos() {
+        Call<List<Estabelecimento>> call = estabelecimentoApi.getAllEstabelecimentos();
+        call.enqueue(new Callback<List<Estabelecimento>>() {
+            @Override
+            public void onResponse(Call<List<Estabelecimento>> call, Response<List<Estabelecimento>> response) {
+                if (response.isSuccessful()) {
+                    List<Estabelecimento> listaEstabelecimento = response.body();
+                    // Atualize a lista de estabelecimentos do adapter
+                    EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
+                    estabelecimentoAdapter.setListaEstabelecimentos(listaEstabelecimento);
+
+                    // Notifique a RecyclerView sobre as alterações nos dados
+                    estabelecimentoAdapter.notifyDataSetChanged();
+
+                    // Configure o adapter atualizado na RecyclerView
+                    estabelecimentosRecyclerView.setAdapter(estabelecimentoAdapter);
+                } else {
+                    Toast.makeText(getContext(), "Falha ao obter os estabelecimentos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Estabelecimento>> call, Throwable t) {
+                Toast.makeText(getContext(), "Erro de conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

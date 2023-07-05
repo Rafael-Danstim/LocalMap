@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
 import com.example.localmap.recycler_view_classes.Categoria;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Categoria categoria = listaCategorias.get(position);
 
-        holder.imagemDaCategoria.setBackgroundResource(categoria.getImagem());
+        //holder.imagemDaCategoria.setBackgroundResource(categoria.getImagem());
+        Picasso.get().load(categoria.getImagem()).into(holder.imagemDaCategoria);
         holder.nomeDaCategoria.setText(categoria.getNome());
     }
 
