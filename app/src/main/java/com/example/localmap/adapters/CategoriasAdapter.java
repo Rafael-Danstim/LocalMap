@@ -23,6 +23,10 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.My
         this.listaCategorias = lista;
     }
 
+    public void setListaCategorias(List<Categoria> lista) {
+        this.listaCategorias = lista;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

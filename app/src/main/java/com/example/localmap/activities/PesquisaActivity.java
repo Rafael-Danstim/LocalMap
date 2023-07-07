@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.localmap.R;
 import com.example.localmap.adapters.EstabelecimentoAdapter;
-import com.example.localmap.itens_listas.ItemEstabelecimento;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
 import com.example.localmap.retrofit.EstabelecimentoApi;
 import com.example.localmap.retrofit.RetrofitService;
@@ -52,7 +51,6 @@ public class PesquisaActivity extends AppCompatActivity {
 
         // RecyclerView com a lista de estabelecimentos.
         estabelecimentosRecyclerView = findViewById(R.id.estabelecimentosRecyclerView);
-        //listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
         EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);

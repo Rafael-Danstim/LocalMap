@@ -22,11 +22,10 @@ import com.example.localmap.adapters.CategoriasAdapter;
 import com.example.localmap.adapters.EstabelecimentoAdapter;
 import com.example.localmap.adapters.EstabelecimentoRecenteAdapter;
 import com.example.localmap.databinding.FragmentHomeBinding;
-import com.example.localmap.itens_listas.ItemCategoria;
-import com.example.localmap.itens_listas.ItemEstabelecimento;
 import com.example.localmap.itens_listas.ItemEstabelecimentoRecente;
 import com.example.localmap.recycler_view_classes.Categoria;
 import com.example.localmap.recycler_view_classes.Estabelecimento;
+import com.example.localmap.retrofit.CategoriaApi;
 import com.example.localmap.retrofit.EstabelecimentoApi;
 import com.example.localmap.retrofit.RetrofitService;
 
@@ -53,6 +52,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     private List<Estabelecimento> listaEstabelecimento = new ArrayList<>();
 
     private EstabelecimentoApi estabelecimentoApi;
+    private CategoriaApi categoriaApi;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -86,11 +86,17 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
+        // Crie a instância do RetrofitService
+        RetrofitService retrofitService = new RetrofitService();
+        // Obtenha o objeto Retrofit
+        Retrofit retrofit = retrofitService.getRetrofit();
+        // Cria uma instância da interface da API do Retrofit
+        estabelecimentoApi = retrofit.create(EstabelecimentoApi.class);
+        // Cria uma instância da interface da API do Retrofit
+        categoriaApi = retrofit.create(CategoriaApi.class);
+
         //--> Abaixo, configurar a RecyclerView de categorias.
         categoriasRecyclerView = root.findViewById(R.id.categoriasRecyclerView);
-        //Chamando o método criarCategorias: "this.criarCategorias();"
-        //Abaixo, listando uma quantidade de categorias.
-        listaCategoria = ItemCategoria.criarCategorias(50);
         //Abaixo, configurar o adapter de categorias.
         CategoriasAdapter categoriasAdapter = new CategoriasAdapter(listaCategoria);
         LinearLayoutManager layoutManagerCategorias = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -99,6 +105,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         categoriasRecyclerView.setHasFixedSize(true);
         //Abaixo, adapter.
         categoriasRecyclerView.setAdapter(categoriasAdapter);
+        // Chama o método para obter a lista de categorias do servidor
+        getAllCategorias();
 
         //--> Abaixo, configurar a RecyclerView de estabelecimentos recentes.
         estabelecimentosRecentesRecyclerView = root.findViewById(R.id.estabelecimentosRecentesRecyclerView);
@@ -112,22 +120,12 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
         estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
-        //Abaixo, listando uma quantidade de estabelecimentos.
-        //listaEstabelecimento = ItemEstabelecimento.criarEstabelecimentos();
         EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
         estabelecimentosRecyclerView.setHasFixedSize(true);
         estabelecimentosRecyclerView.setAdapter(estabelecimentoAdapter);
-
-        // Crie a instância do RetrofitService
-        RetrofitService retrofitService = new RetrofitService();
-        // Obtenha o objeto Retrofit
-        Retrofit retrofit = retrofitService.getRetrofit();
-        // Crie uma instância da interface da API do Retrofit
-        estabelecimentoApi = retrofit.create(EstabelecimentoApi.class);
-
-        // Chame o método para obter a lista de estabelecimentos do servidor
+        // Chama o método para obter a lista de estabelecimentos do servidor
         getAllEstabelecimentos();
 
         return root;
@@ -141,14 +139,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             public void onResponse(Call<List<Estabelecimento>> call, Response<List<Estabelecimento>> response) {
                 if (response.isSuccessful()) {
                     List<Estabelecimento> listaEstabelecimento = response.body();
-                    // Atualize a lista de estabelecimentos do adapter
+                    // Atualiza a lista de estabelecimentos do adapter
                     EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
                     estabelecimentoAdapter.setListaEstabelecimentos(listaEstabelecimento);
 
-                    // Notifique a RecyclerView sobre as alterações nos dados
+                    // Notifica a RecyclerView sobre as alterações nos dados
                     estabelecimentoAdapter.notifyDataSetChanged();
 
-                    // Configure o adapter atualizado na RecyclerView
+                    // Configura o adapter atualizado na RecyclerView
                     estabelecimentosRecyclerView.setAdapter(estabelecimentoAdapter);
                 } else {
                     Toast.makeText(getContext(), "Falha ao obter os estabelecimentos", Toast.LENGTH_SHORT).show();
@@ -157,6 +155,34 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
             @Override
             public void onFailure(Call<List<Estabelecimento>> call, Throwable t) {
+                Toast.makeText(getContext(), "Erro de conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getAllCategorias() {
+        Call<List<Categoria>> call = categoriaApi.getAllCategorias();
+        call.enqueue(new Callback<List<Categoria>>() {
+            @Override
+            public void onResponse(Call<List<Categoria>> call, Response<List<Categoria>> response) {
+                if (response.isSuccessful()) {
+                    List<Categoria> listaCategorias = response.body();
+                    // Atualiza a lista de categorias do adapter
+                    CategoriasAdapter categoriasAdapter = new CategoriasAdapter(listaCategorias);
+                    categoriasAdapter.setListaCategorias(listaCategorias);
+
+                    // Notifica a RecyclerView sobre as alterações nos dados
+                    categoriasAdapter.notifyDataSetChanged();
+
+                    // Configura o adapter atualizado na RecyclerView
+                    categoriasRecyclerView.setAdapter(categoriasAdapter);
+                } else {
+                    Toast.makeText(getContext(), "Falha ao obter as categorias", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Categoria>> call, Throwable t) {
                 Toast.makeText(getContext(), "Erro de conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -11,29 +11,24 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="154dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/local_map_logo02" />
 
     <Button
         android:id="@+id/buttonLogar"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="56dp"
         android:backgroundTint="#180C62"
         android:elevation="6dp"
         android:fontFamily="@font/inter_bold"
         android:text="Continuar com o Google"
-        android:textColor="@color/white"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="100dp"
@@ -41,36 +36,32 @@
         app:iconPadding="5dp"
         app:iconSize="25dp"
         app:iconTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/buttonInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="30dp"
         android:fontFamily="@font/modern_antiqua"
         android:text="Seja bem-vindo ao Local Map"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
 
     <Button
         android:id="@+id/buttonInfo"
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="141dp"
-        android:layout_marginBottom="166dp"
         android:backgroundTint="#FFFFFF"
         android:elevation="6dp"
         android:fontFamily="@font/inter_bold"
@@ -83,6 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
