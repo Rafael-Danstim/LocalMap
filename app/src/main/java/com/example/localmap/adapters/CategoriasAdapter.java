@@ -1,5 +1,6 @@
 package com.example.localmap.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.localmap.R;
+import com.example.localmap.activities.CategoriaActivity;
 import com.example.localmap.recycler_view_classes.Categoria;
 import com.squareup.picasso.Picasso;
 
@@ -39,6 +41,20 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Categoria categoria = listaCategorias.get(position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtenha a categoria correspondente ao item clicado
+                Categoria categoria = listaCategorias.get(position);
+
+                // Abra a tela de categoria com os estabelecimentos correspondentes
+                Intent intent = new Intent(view.getContext(), CategoriaActivity.class);
+                intent.putExtra("categoria", categoria);
+                view.getContext().startActivity(intent);
+            }
+        });
+
 
         //holder.imagemDaCategoria.setBackgroundResource(categoria.getImagem());
         Picasso.get().load(categoria.getImagem()).into(holder.imagemDaCategoria);

@@ -24,7 +24,6 @@ public class EstabelecimentoActivity extends AppCompatActivity {
 
         // Exibe os dados do estabelecimento nos campos correspondentes
         ShapeableImageView fotoEstabelecimentoShapeableImageView = findViewById(R.id.fotoEstabelecimentoShapeableImageView);
-        //fotoEstabelecimentoShapeableImageView.setImageResource(estabelecimento.getImagem());
 
         Glide.with(this)
                 .load(estabelecimento.getImagem())

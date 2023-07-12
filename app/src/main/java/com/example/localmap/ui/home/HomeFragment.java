@@ -86,9 +86,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
-        // Crie a instância do RetrofitService
+        // Cria a instância do RetrofitService
         RetrofitService retrofitService = new RetrofitService();
-        // Obtenha o objeto Retrofit
+        // Obtem o objeto Retrofit
         Retrofit retrofit = retrofitService.getRetrofit();
         // Cria uma instância da interface da API do Retrofit
         estabelecimentoApi = retrofit.create(EstabelecimentoApi.class);
