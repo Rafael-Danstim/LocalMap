@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +18,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.localmap.R;
 import com.example.localmap.databinding.ActivityInicioBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class InicioActivity extends AppCompatActivity {
 
+    GoogleSignInOptions googleSignInOptions;
+    GoogleSignInClient googleSignInClient;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityInicioBinding binding;
     private BottomNavigationView bottomNavigationView;
@@ -28,6 +38,9 @@ public class InicioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);
 
         binding = ActivityInicioBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -45,6 +58,28 @@ public class InicioActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_inicio);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView nomeUsuario = headerView.findViewById(R.id.usuario);
+        TextView emailUsuario = headerView.findViewById(R.id.email);
+        Button botaoSair = headerView.findViewById(R.id.sair);
+
+        //Define os textos de nome e email de acordo com a última conta que fez login
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account!=null){
+            String nomeContaGoogle = account.getDisplayName();
+            String emailContaGoogle = account.getEmail();
+            nomeUsuario.setText(nomeContaGoogle);
+            emailUsuario.setText(emailContaGoogle);
+        }
+
+        botaoSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
 
         //Abaixo, menu inferior.
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
@@ -80,5 +115,15 @@ public class InicioActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_inicio);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    void signOut(){
+        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(Task<Void> task) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
     }
 }

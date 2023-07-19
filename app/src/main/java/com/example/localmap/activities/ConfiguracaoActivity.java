@@ -12,14 +12,10 @@ import com.example.localmap.R;
 
 public class ConfiguracaoActivity extends AppCompatActivity {
 
-    private Button btnSair;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracao);
-
-        btnSair = findViewById(R.id.btnSair);
 
         Toolbar toolbar2 = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar2);
