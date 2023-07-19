@@ -1,4 +1,5 @@
 <resources>
+    <string name="webclient_id">151969472541-u4pnpgvthiflke8phpv8d75kc3j592jk.apps.googleusercontent.com</string>
     <string name="app_name">LocalMap</string>
     <string name="title_activity_main_inicio">MainInicio</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
