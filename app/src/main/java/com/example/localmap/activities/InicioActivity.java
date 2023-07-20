@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 public class InicioActivity extends AppCompatActivity {
 
@@ -63,7 +65,8 @@ public class InicioActivity extends AppCompatActivity {
 
         TextView nomeUsuario = headerView.findViewById(R.id.usuario);
         TextView emailUsuario = headerView.findViewById(R.id.email);
-        Button botaoSair = headerView.findViewById(R.id.sair);
+        ImageView imageView = headerView.findViewById(R.id.imageView);
+        ImageView botaoSair = headerView.findViewById(R.id.sair);
 
         //Define os textos de nome e email de acordo com a última conta que fez login
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
@@ -72,6 +75,18 @@ public class InicioActivity extends AppCompatActivity {
             String emailContaGoogle = account.getEmail();
             nomeUsuario.setText(nomeContaGoogle);
             emailUsuario.setText(emailContaGoogle);
+
+            // Obter URL da foto de perfil do usuário
+            if (account.getPhotoUrl() != null) {
+                String photoUrl = account.getPhotoUrl().toString();
+
+                // Carregar imagem usando a biblioteca Picasso
+                Picasso.get()
+                        .load(photoUrl)
+                        .placeholder(R.drawable.icone_google) // Imagem temporária enquanto carrega
+                        .error(R.drawable.local_map_logo02) // Imagem de erro, caso haja falha no carregamento
+                        .into(imageView);
+            }
         }
 
         botaoSair.setOnClickListener(new View.OnClickListener() {
