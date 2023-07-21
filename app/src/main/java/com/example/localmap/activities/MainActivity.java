@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private Button botaoLogar;
+    private Button botaoInfo;
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         botaoLogar = findViewById(R.id.buttonLogar);
+        botaoInfo = findViewById(R.id.buttonInfo);
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);
 
@@ -47,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+
+        botaoInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iInfo = new Intent(getBaseContext(), SobreActivity.class);
+                startActivity(iInfo);
             }
         });
     }

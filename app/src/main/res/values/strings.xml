@@ -12,6 +12,12 @@
     <string name="menu_home">Local Map</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_favoritos">Favoritos</string>
+    <string name="sobre_introdução">Este aplicativo foi produzido com o intuito de ser um trabalho de conclusão de curso, TCC.</string>
+    <string name="orientador">Orientador</string>
+    <string name="nome_orientador">Alexandre Costa</string>
+    <string name="orientandos">Orientandos</string>
+    <string name="orientando1">Carlos Eduardo</string>
+    <string name="orientando2">Rafael Danstim</string>
     <!-- "Ordenar por" de inicio -->
     <string-array name="ordenar">
         <item>Distância</item>
