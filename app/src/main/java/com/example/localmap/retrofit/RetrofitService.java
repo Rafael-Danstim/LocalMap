@@ -1,7 +1,6 @@
 package com.example.localmap.retrofit;
 
 import com.google.gson.Gson;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,5 +22,9 @@ public class RetrofitService {
 
     public Retrofit getRetrofit() {
         return retrofit;
+    }
+
+    public UsuarioEstabelecimentoFavoritadoApi getUsuarioEstabelecimentoFavoritadoApi() {
+        return retrofit.create(UsuarioEstabelecimentoFavoritadoApi.class);
     }
 }

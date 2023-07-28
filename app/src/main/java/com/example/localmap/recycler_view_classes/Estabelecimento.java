@@ -11,7 +11,6 @@ public class Estabelecimento implements Serializable {
     private String imagem;
     private double avaliacao;
     private String telefoneContato;
-    private boolean favoritado;
 
     //Construtor Geral da classe
     public Estabelecimento(String nome, Categoria categoria, String endereco, String rotaGoogleMaps, String imagem, double avaliacao, String telefoneContato, boolean favoritado) {
@@ -22,7 +21,6 @@ public class Estabelecimento implements Serializable {
         this.imagem = imagem;
         this.avaliacao = avaliacao;
         this.telefoneContato = telefoneContato;
-        this.favoritado = favoritado;
     }
 
     //Construtor para a RecyclerView dos estabelecimentos recentemente visitados na tela de inicio.
@@ -103,14 +101,6 @@ public class Estabelecimento implements Serializable {
         this.telefoneContato = telefoneContato;
     }
 
-    public boolean isFavoritado() {
-        return favoritado;
-    }
-
-    public void setFavoritado(boolean favoritado) {
-        this.favoritado = favoritado;
-    }
-
     @Override
     public String toString() {
         return "Estabelecimento{" +
@@ -122,7 +112,6 @@ public class Estabelecimento implements Serializable {
                 ", imagem=" + imagem +
                 ", avaliacao=" + avaliacao +
                 ", telefoneContato='" + telefoneContato + '\'' +
-                ", favoritado=" + favoritado +
                 '}';
     }
 }

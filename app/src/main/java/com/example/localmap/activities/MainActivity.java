@@ -3,6 +3,7 @@ package com.example.localmap.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -106,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     // Sucesso ao salvar o usuário no servidor
                     Usuario savedUser = response.body();
-                    // Você pode usar o ID retornado pelo servidor, se necessário
+                    // Salvar o ID do usuário retornado pelo servidor nas preferências compartilhadas
+                    // para uso posterior (favoritar estabelecimentos)
+                    SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("user_id", savedUser.getId());
+                    editor.apply();
                 } else {
                     // Tratar falha ao salvar o usuário no servidor
                 }
