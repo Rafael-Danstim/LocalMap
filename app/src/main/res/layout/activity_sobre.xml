@@ -115,8 +115,9 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="299dp"
-        android:layout_height="94dp"
+        android:layout_height="110dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:fontFamily="@font/modern_antiqua"
         android:text="@string/sobre_introdução"
         android:textAlignment="center"

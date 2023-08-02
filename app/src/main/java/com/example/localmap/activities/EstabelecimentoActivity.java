@@ -85,8 +85,6 @@ public class EstabelecimentoActivity extends AppCompatActivity {
         enderecoTextView.setText(estabelecimento.getEndereco());
         // Acima, falta definir Rota
 
-        //imagem de favoritado: res/drawable-v24/favorito_cheio.png
-        //imagem de não favoritado: res/drawable-v24/favorito_vazio.png
     }
 
     private void favoriteEstabelecimento() {

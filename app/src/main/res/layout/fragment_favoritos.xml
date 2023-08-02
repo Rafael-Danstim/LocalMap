@@ -6,16 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.favoritos.FavoritosFragment">
 
-    <TextView
-        android:id="@+id/textView7"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoritadosRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ADICIONE ALGO..."
-        android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="bold"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
