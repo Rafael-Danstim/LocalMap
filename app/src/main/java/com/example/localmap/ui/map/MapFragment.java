@@ -1,76 +1,64 @@
 package com.example.localmap.ui.map;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.localmap.databinding.FragmentMapBinding;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;;
-import com.google.android.gms.maps.model.LatLng;
+import android.webkit.GeolocationPermissions;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import com.example.localmap.R;
 
+public class MapFragment extends Fragment {
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
-
-    private FragmentMapBinding binding;
-    private MapView mapView;
-    private GoogleMap googleMap;
+    private WebView mapWebView;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        mapWebView = rootView.findViewById(R.id.mapWebView);
 
-        binding = FragmentMapBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        // Ativa JavaScript (necessário para o Google Maps)
+        WebSettings webSettings = mapWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
-        // Pega o id mapView da fragment_map;
-        mapView = binding.mapView;
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
+        // Configura o cliente de geolocalização para permitir o acesso à localização
+        mapWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                // Solicita permissão de geolocalização
+                if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    callback.invoke(origin, true, false);
+                } else {
+                    ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+                }
+            }
+        });
 
-        return root;
+        // Carrega a página do Google Maps
+        mapWebView.loadUrl("https://www.google.com/maps");
+
+        return rootView;
     }
 
+    @SuppressLint("MissingPermission")
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-    @Override
-    public void onMapReady(GoogleMap map) {
-        googleMap = map;
-
-        LatLng SantaLuzia = new LatLng(-6.875794544797201, -36.91962465083226); // Define a cidade do mapa para Santa Luzia.
-        float zoomLevel = 17.0f; // Define o nível de zoom desejado para a exibição no mapa.
-
-        googleMap.moveCamera(com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(SantaLuzia, zoomLevel));
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // A permissão de geolocalização foi concedida, permita o acesso à localização
+                mapWebView.reload();
+            }
+        }
     }
 }
