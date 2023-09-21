@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.perfil.PerfilFragment">
+    tools:context=".ui.perfil.ConfiguracaoFragment"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QUEM SOU EU?"
+        android:text="CONFIGURAÇÕES"
         android:textAlignment="center"
         android:textSize="48sp"
         android:textStyle="bold"

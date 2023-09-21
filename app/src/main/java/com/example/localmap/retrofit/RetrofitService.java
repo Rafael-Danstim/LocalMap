@@ -12,6 +12,8 @@ public class RetrofitService {
         initializeRetrofit();
     }
 
+    // Minha casa: http://10.0.0.17:9000
+    // IFPB: http://192.168.9.18:9000
     private void initializeRetrofit() {
         Gson gson = new Gson();
         retrofit = new Retrofit.Builder()

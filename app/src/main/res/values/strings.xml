@@ -10,7 +10,7 @@
     <string name="action_settings">Configurações</string>
 
     <string name="menu_home">Local Map</string>
-    <string name="menu_perfil">Perfil</string>
+    <string name="menu_configuracao">Configurações</string>
     <string name="menu_favoritos">Favoritos</string>
     <string name="sobre_introdução">Este aplicativo foi produzido com o intuito de ser um trabalho de conclusão de curso, TCC.</string>
     <string name="orientador">Orientador</string>

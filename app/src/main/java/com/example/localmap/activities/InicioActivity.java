@@ -54,7 +54,7 @@ public class InicioActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_perfil, R.id.nav_favoritos, R.id.nav_map, R.id.nav_pesquisa)
+                R.id.nav_home, R.id.nav_configuracao, R.id.nav_favoritos, R.id.nav_map, R.id.nav_pesquisa)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_inicio);
@@ -101,28 +101,12 @@ public class InicioActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         //Abaixo, ocultar o menu inferior quando perfil ou favoritos for selecionado.
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.nav_perfil || destination.getId() == R.id.nav_favoritos) {
+            if (destination.getId() == R.id.nav_configuracao || destination.getId() == R.id.nav_favoritos) {
                 bottomNavigationView.setVisibility(View.GONE);
             } else {
                 bottomNavigationView.setVisibility(View.VISIBLE);
             }
         });
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_inicio, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent configuracoes = new Intent(getApplicationContext(), ConfiguracaoActivity.class);
-                startActivity(configuracoes);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

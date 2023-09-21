@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.localmap.databinding.FragmentPerfilBinding;
+import com.example.localmap.databinding.FragmentConfiguracaoBinding;
 
-public class PerfilFragment extends Fragment {
+public class ConfiguracaoFragment extends Fragment {
 
-    private FragmentPerfilBinding binding;
+    private FragmentConfiguracaoBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentPerfilBinding.inflate(inflater, container, false);
+        binding = FragmentConfiguracaoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
