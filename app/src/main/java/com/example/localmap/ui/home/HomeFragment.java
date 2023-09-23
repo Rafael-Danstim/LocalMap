@@ -52,6 +52,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     private EstabelecimentoApi estabelecimentoApi;
     private CategoriaApi categoriaApi;
 
+    private EstabelecimentoAdapter estabelecimentoAdapter;
+
+    private String ordemLista = "Melhor Avaliado";
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -112,7 +116,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
         //--> Abaixo, configurar a RecyclerView da lista de estabelecimentos no inicio.
         estabelecimentosRecyclerView = root.findViewById(R.id.estabelecimentosRecyclerView);
-        EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
+        estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
         LinearLayoutManager layoutManagerEstabelecimentosInicio = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         estabelecimentosRecyclerView.setLayoutManager(layoutManagerEstabelecimentosInicio);
         estabelecimentosRecyclerView.setHasFixedSize(true);
@@ -133,7 +137,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                     List<Estabelecimento> listaEstabelecimento = response.body();
                     // Atualiza a lista de estabelecimentos do adapter
                     EstabelecimentoAdapter estabelecimentoAdapter = new EstabelecimentoAdapter(listaEstabelecimento);
-                    estabelecimentoAdapter.setListaEstabelecimentos(listaEstabelecimento);
+                    estabelecimentoAdapter.setListaEstabelecimentos(listaEstabelecimento, ordemLista);
 
                     // Notifica a RecyclerView sobre as alterações nos dados
                     estabelecimentoAdapter.notifyDataSetChanged();
@@ -189,7 +193,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     // --> Abaixo, os dois metodos do spinner "Ordenar por".
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+        String selectedItem = adapterView.getItemAtPosition(i).toString();
+        if (selectedItem.equals("Melhor Avaliado")) {
+            ordemLista = "Melhor Avaliado";
+            getAllEstabelecimentos();
+        } else if (selectedItem.equals("Ordem Alfabética")) {
+            ordemLista = "Ordem Alfabética";
+            getAllEstabelecimentos();
+        }
     }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {

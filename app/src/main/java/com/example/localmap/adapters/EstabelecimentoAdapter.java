@@ -15,6 +15,8 @@ import com.example.localmap.recycler_view_classes.Estabelecimento;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -45,7 +47,7 @@ public class EstabelecimentoAdapter extends RecyclerView.Adapter<Estabelecimento
             @Override
             public void onClick(View view) {
                 // Obtem o estabelecimento correspondente ao item clicado
-                Estabelecimento estabelecimento = listaEstabelecimentoInicio.get(position);
+                Estabelecimento estabelecimento = listaEstabelecimentoFiltrada.get(position);
 
                 // Abre a tela de estabelecimento com os dados do estabelecimento clicado
                 Intent intent = new Intent(view.getContext(), EstabelecimentoActivity.class);
@@ -67,6 +69,28 @@ public class EstabelecimentoAdapter extends RecyclerView.Adapter<Estabelecimento
 
     public void setListaEstabelecimentos(List<Estabelecimento> listaEstabelecimentos) {
         listaEstabelecimentoFiltrada = new ArrayList<>(listaEstabelecimentos);
+        notifyDataSetChanged();
+    }
+
+    public void setListaEstabelecimentos(List<Estabelecimento> listaEstabelecimentos, String ordemLista) {
+        listaEstabelecimentoFiltrada = new ArrayList<>(listaEstabelecimentos);
+        switch (ordemLista) {
+            case "Melhor Avaliado":
+                Collections.sort(listaEstabelecimentoFiltrada, new Comparator<Estabelecimento>() {
+                    @Override
+                    public int compare(Estabelecimento e1, Estabelecimento e2) {
+                        return Double.compare(e2.getAvaliacao(), e1.getAvaliacao());
+                    }
+                });
+                break;
+            case "Ordem Alfabética":
+                Collections.sort(listaEstabelecimentoFiltrada, new Comparator<Estabelecimento>() {
+                    @Override
+                    public int compare(Estabelecimento e1, Estabelecimento e2) {
+                        return e1.getNome().compareToIgnoreCase(e2.getNome());
+                    }
+                });
+        }
         notifyDataSetChanged();
     }
 

@@ -20,8 +20,8 @@
     <string name="orientando2">Rafael Danstim</string>
     <!-- "Ordenar por" de inicio -->
     <string-array name="ordenar">
-        <item>Distância</item>
         <item>Melhor Avaliado</item>
+        <item>Ordem Alfabética</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
