@@ -32,9 +32,6 @@
             android:name=".activities.PesquisaActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ConfiguracaoActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.InicioActivity"
             android:exported="false"
             android:label="@string/title_activity_main_inicio"
