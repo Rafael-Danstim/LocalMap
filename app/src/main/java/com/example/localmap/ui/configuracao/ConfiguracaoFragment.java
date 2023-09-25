@@ -18,12 +18,14 @@ import com.example.localmap.databinding.FragmentConfiguracaoBinding;
 
 public class ConfiguracaoFragment extends Fragment {
 
+    public static final String PREF_THEME = "theme_preference";
+    public static final String THEME_LIGHT = "light";
+    public static final String THEME_DARK = "dark";
     private FragmentConfiguracaoBinding binding;
 
     private Switch mudarTema;
-    private static final String PREF_THEME = "theme_preference";
-    private static final String THEME_LIGHT = "light";
-    private static final String THEME_DARK = "dark";
+
+    private SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class ConfiguracaoFragment extends Fragment {
         View root = binding.getRoot();
 
         // Configura o tema com base na preferência salva
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("app_prefs", AppCompatActivity.MODE_PRIVATE);
+        sharedPreferences = requireActivity().getSharedPreferences("app_prefs", AppCompatActivity.MODE_PRIVATE);
         String savedTheme = sharedPreferences.getString(PREF_THEME, THEME_LIGHT);
 
         if (savedTheme.equals(THEME_DARK)) {
@@ -46,6 +48,12 @@ public class ConfiguracaoFragment extends Fragment {
         // Define o estado do switch com base na preferência de tema salvo
         mudarTema.setChecked(savedTheme.equals(THEME_DARK));
 
+        checkTheme();
+
+        return root;
+    }
+
+    public void checkTheme() {
         mudarTema.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -65,8 +73,6 @@ public class ConfiguracaoFragment extends Fragment {
                 requireActivity().recreate();
             }
         });
-
-        return root;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.localmap.ui.home;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +32,7 @@ import com.example.localmap.recycler_view_classes.Estabelecimento;
 import com.example.localmap.retrofit.CategoriaApi;
 import com.example.localmap.retrofit.EstabelecimentoApi;
 import com.example.localmap.retrofit.RetrofitService;
+import com.example.localmap.ui.configuracao.ConfiguracaoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,11 +60,16 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
     private String ordemLista = "Melhor Avaliado";
 
+    private ConfiguracaoFragment configuracaoFragment;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        // Verifique o tema salvo no SharedPreferences
+        verificarTema();
 
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
@@ -205,5 +214,17 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void verificarTema() {
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("app_prefs", AppCompatActivity.MODE_PRIVATE);
+        String savedTheme = sharedPreferences.getString(configuracaoFragment.PREF_THEME, ConfiguracaoFragment.THEME_LIGHT);
+
+        // Defina o tema do aplicativo com base na preferência salva
+        if (savedTheme.equals(ConfiguracaoFragment.THEME_DARK)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }
