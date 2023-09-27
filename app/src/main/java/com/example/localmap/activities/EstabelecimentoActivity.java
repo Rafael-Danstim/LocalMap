@@ -2,7 +2,9 @@ package com.example.localmap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -83,8 +85,22 @@ public class EstabelecimentoActivity extends AppCompatActivity {
         contatoTextView.setText(estabelecimento.getTelefoneContato());
         TextView enderecoTextView = findViewById(R.id.enderecoTextView);
         enderecoTextView.setText(estabelecimento.getEndereco());
-        // Acima, falta definir Rota
 
+        ImageView rotaImageView = findViewById(R.id.rotaImageView);
+        rotaImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String rotaLink = estabelecimento.getRotaGoogleMaps();
+                if (rotaLink != null && !rotaLink.isEmpty()) {
+                    // Abre o link no navegador padrão
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rotaLink));
+                    startActivity(intent);
+                } else {
+                    // Trate o caso em que o link está vazio ou nulo
+                    Snackbar.make(v, "Link de rota não disponível.", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void favoriteEstabelecimento() {
